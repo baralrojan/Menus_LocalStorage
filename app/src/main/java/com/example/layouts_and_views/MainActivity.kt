@@ -6,9 +6,12 @@ A00233565
 package com.example.layouts_and_views
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -78,58 +81,29 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-     //update score with the help of spinner
-        //got some issued with it
-    /*
-        spinner1.onItemSelectedListener = object :
-        AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    var position_val = score[position]
-                    var val_to_int = position_val.toInt()
-                    var final1 = val_to_int+num1
-                    num1 = final1
-                    score1.setText("$num1")
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
 
 
             }
+//Menu display
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
+    }
 
-        spinner2.onItemSelectedListener = object :
-
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                var position_val = score[position]
-                var val_to_int = position_val.toInt()
-                var final2 = val_to_int+num2
-                num2 = final2
-                score2.setText("$num2")
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.about ->{
+                val myToast = Toast.makeText(this,"Developed by Rojan Baral, " +
+                        "JAV-1001, " +
+                        "Cambrian college, Sudbury",Toast.LENGTH_LONG)
+                myToast.setGravity(Gravity.LEFT,300,300)
+                myToast.show()
+                return true
+            }else -> super.onOptionsItemSelected(item)
         }
-
-     */
-
-
-            }
+    }
        }
+
+
 
 
