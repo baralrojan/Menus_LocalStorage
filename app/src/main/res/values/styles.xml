@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--start designing app title -->
+    <style name="app_name_design">
+        <item name="android:layout_width">366dp</item>
+        <item name="android:layout_height">69dp</item>
+        <item name="android:ems">20</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">26dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--End designing app title -->
+
+    <!--start designing team name -->
+    <style name="team_name_design">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">53dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <!--End designing team name -->
+
+    <!--start designing score display box -->
+        <style name="score_box_design">
+            <item name="android:layout_width">100dp</item>
+            <item name="android:layout_height">95dp</item>
+            <item name="android:layout_marginTop">95dp</item>
+            <item name="android:text">0</item>
+            <item name="android:textAlignment">center</item>
+            <item name="android:textSize">22dp</item>
+            <item name="android:background">@drawable/rounded_corner</item>
+        </style>
+    <!--End designing score display box -->
+
+
+    <!--start spinner design -->
+    <style name="spinner_style">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+    </style>
+    <!--End Button design -->
+
+</resources>

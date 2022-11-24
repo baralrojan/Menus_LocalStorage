@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <!--Starts Display Title-->
+    <TextView
+        android:id="@+id/editTextTextPersonName"
+        style="@style/app_name_design"
+        android:inputType="textPersonName"
+        android:text="Inter School Basketball"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+    <!--Ends Display Title-->
+
+    <!--Starts Display First college name-->
+    <TextView
+        android:id="@+id/cambrian"
+        style="@style/team_name_design"
+        android:text="Cambrian"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+    <!--Ends Display First college name-->
+
+    <!--Starts Display Second college name-->
+    <TextView
+        android:id="@+id/seneca"
+        style="@style/team_name_design"
+        android:text="Seneca"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+    <!--Ends Display Second college name-->
+
+    <!--Starts Display Cambrian college score-->
+    <TextView
+        android:id="@+id/score1"
+        style="@style/score_box_design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cambrian"
+        app:layout_constraintVertical_bias="0.0" />
+    <!--Ends Display Cambrian college score-->
+
+    <!--Starts Display Seneca college score-->
+    <TextView
+        android:id="@+id/score2"
+        style="@style/score_box_design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seneca"
+        app:layout_constraintVertical_bias="0.0" />
+    <!--Ends Display Seneca college score-->
+
+    <!--Starts Spinner to show cambrian recent score-->
+    <Spinner
+        android:id="@+id/result1"
+        style="@style/spinner_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score1"
+        app:layout_constraintVertical_bias="0.584" />
+    <!--Ends Spinner to show cambrian recent score-->
+
+    <!--Starts Spinner to show Seneca recent score-->
+    <Spinner
+        android:id="@+id/result2"
+        style="@style/spinner_style"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score2"
+        app:layout_constraintVertical_bias="0.584" />
+    <!--Ends Spinner to show Seneca recent score-->
+
+
+
+    <!--Starts Button to increase cambrian score-->
+    <Button
+        android:id="@+id/btn1_increase"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="score(+)"
+        app:layout_constraintBottom_toTopOf="@+id/result1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score1"
+        app:layout_constraintVertical_bias="0.061"
+        tools:ignore="ExtraText" />
+    <!--Ends Button to increase cambrian score-->
+
+    <!--Starts Button to decrease cambrian score-->
+    <Button
+        android:id="@+id/btn1_decrease"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Score(-)"
+        app:layout_constraintBottom_toTopOf="@+id/result1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score1"
+        app:layout_constraintVertical_bias="0.643" />
+    <!--Ends Button to decrease cambrian score-->
+
+    <!--Starts Button to increase Seneca score-->
+    <Button
+        android:id="@+id/btn2_increase"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="score(+)"
+        app:layout_constraintBottom_toTopOf="@+id/result2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score2"
+        app:layout_constraintVertical_bias="0.058" />
+    <!--Ends Button to increase Seneca score-->
+
+    <!--Starts Button to decrease Seneca score-->
+    <Button
+        android:id="@+id/btn2_decrease"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Score(-)"
+        app:layout_constraintBottom_toTopOf="@+id/result2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score2"
+        app:layout_constraintVertical_bias="0.637" />
+    <!--Ends Button to decrease Seneca score-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
