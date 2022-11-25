@@ -5,6 +5,7 @@ A00233565
  */
 package com.example.layouts_and_views
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
@@ -99,10 +100,20 @@ class MainActivity : AppCompatActivity() {
                 myToast.setGravity(Gravity.LEFT,300,300)
                 myToast.show()
                 return true
-            }else -> super.onOptionsItemSelected(item)
+            }
+            R.id.setting ->{
+                val intent = Intent(this,Activity2::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
-       }
+
+
+
+
+}
 
 
 
