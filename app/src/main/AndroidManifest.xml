@@ -15,18 +15,13 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:label="@string/title_activity_settings">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".Activity2"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

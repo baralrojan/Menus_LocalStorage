@@ -49,6 +49,7 @@
     <!--Starts Display Cambrian college score-->
     <TextView
         android:id="@+id/score1"
+        android:text="0"
         style="@style/score_box_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +62,7 @@
     <!--Starts Display Seneca college score-->
     <TextView
         android:id="@+id/score2"
+        android:text="0"
         style="@style/score_box_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

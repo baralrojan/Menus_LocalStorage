@@ -18,18 +18,18 @@ import com.example.layouts_and_views.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private var cambrianScore = ""
-    private var senecaScore = ""
+    private var cambrianScore = "0"
+    private var senecaScore = "0"
     private var viewCamScore:Int = 0
     private var viewSenScore:Int = 0
     lateinit var binding: ActivityMainBinding
     private lateinit var sharedPrefs: SharedPreferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         Log.i("SaveScoreValue",sharedPrefs.getBoolean("prefs_save_score",false).toString())
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         //Increase score if cambrian score(+) is clicked
         var camBtnIncrease = findViewById<Button>(R.id.btn1_increase)
         camBtnIncrease.setOnClickListener {
-            if(cambrianScore!= null){
+            if(cambrianScore.toString().isNotEmpty()){
                 var newscore = cambrianScore.getText().toString()
                 var cambrianScoreToInt = Integer.parseInt(newscore)
                 viewCamScore = cambrianScoreToInt
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         //Decrease score if cambrian score(-) is clicked
         var camBtnDecrease = findViewById<Button>(R.id.btn1_decrease)
         camBtnDecrease.setOnClickListener {
-            if(cambrianScore!= null){
+            if(cambrianScore.toString().isNotEmpty()){
                 var newscore = cambrianScore.getText().toString()
                 var cambrianScoreToInt = Integer.parseInt(newscore)
                 viewCamScore = cambrianScoreToInt
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         //Increase score if seneca score(+) is clicked
         var senBtnIncrease = findViewById<Button>(R.id.btn2_increase)
         senBtnIncrease.setOnClickListener {
-            if(senecaScore!= null){
+            if(senecaScore.toString()!= ""){
                 var newscore = senecaScore.getText().toString()
                 var senecaScoreToInt = Integer.parseInt(newscore)
                 viewSenScore = senecaScoreToInt
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         //Decrease score if seneca score(-) is clicked
         var senBtnDecrease = findViewById<Button>(R.id.btn2_decrease)
         senBtnDecrease.setOnClickListener {
-            if(senecaScore!= null){
+            if(senecaScore.toString()!= ""){
                 var newscore = senecaScore.getText().toString()
                 var senecaScoreToInt = Integer.parseInt(newscore)
                 viewSenScore = senecaScoreToInt
@@ -127,11 +127,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+ //save score and spinner value 
     override fun onPause() {
 
         val editor = sharedPrefs.edit()
-        if (sharedPrefs.getBoolean("prefs_save_score", false)) {
+        if (sharedPrefs.getBoolean("prefs_save_score", true)) {
             editor.putString("prefs_cambrian_score", binding.score1.text.toString())
             editor.putString("prefs_seneca_score", binding.score2.text.toString())
             editor.putInt("prefs_cambrianScore_spinner",binding.result1.selectedItemPosition)
@@ -151,8 +151,10 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    //On menu item selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
             when(item.itemId){
+                //when about is clicked
             R.id.about ->{
                 val myToast = Toast.makeText(this,"Developed by Rojan Baral, " +
                         "JAV-1001, " +
@@ -160,6 +162,7 @@ class MainActivity : AppCompatActivity() {
                 myToast.setGravity(Gravity.LEFT,300,300)
                 myToast.show()
             }
+                //when setting is clicked
             R.id.setting ->{
                 val intent = Intent(this,SettingsActivity::class.java)
                 startActivity(intent)

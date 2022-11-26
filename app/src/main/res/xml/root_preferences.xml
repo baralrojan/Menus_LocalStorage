@@ -3,7 +3,7 @@
 
 
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="prefs_save_score"
         android:title="Save Score"
         android:summary="Save the scores on exit"/>
