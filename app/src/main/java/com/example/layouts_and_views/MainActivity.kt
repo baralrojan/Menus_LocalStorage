@@ -4,25 +4,33 @@ Rojan Baral
 A00233565
  */
 package com.example.layouts_and_views
-import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.preference.PreferenceManager
+import com.example.layouts_and_views.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    var viewCamScore:Int = 0
-    var viewSenScore:Int = 0
+    private var viewCamScore:Int = 0
+    private var viewSenScore:Int = 0
+    lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPrefs: SharedPreferences
 
-    @SuppressLint("ResourceType", "MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        Log.i("SaveScoreValue",sharedPrefs.getBoolean("prefs_save_score",false).toString())
 
         //Create array of basketball points
         val score = arrayOf("0","1", "2", "3")
@@ -37,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         var cambrianScore = findViewById<TextView>(R.id.score1)
         var senecaScore = findViewById<TextView>(R.id.score2)
+
 
 
         //Increase score if cambrian score(+) is clicked
@@ -81,10 +90,39 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
-
             }
+
+    override fun onResume() {
+        super.onResume()
+
+        var cambrianScore = sharedPrefs.getString("prefs_cambrian_score","")
+        var senecaScore = sharedPrefs.getString("prefs_seneca_score","")
+        binding.score1.text = cambrianScore
+        binding.score2.text = senecaScore
+        binding.result1.setSelection(sharedPrefs.getInt("prefs_cambrianScore_spinner",0))
+        binding.result2.setSelection(sharedPrefs.getInt("prefs_senecaScore_spinner",0))
+    }
+
+
+
+
+    override fun onPause() {
+
+        val editor = sharedPrefs.edit()
+        if (sharedPrefs.getBoolean("prefs_save_score", false)) {
+            editor.putString("prefs_cambrian_score", binding.score1.text.toString())
+            editor.putString("prefs_seneca_score", binding.score2.text.toString())
+            editor.putInt("prefs_cambrianScore_spinner",binding.result1.selectedItemPosition)
+            editor.putInt("prefs_senecaScore_spinner",binding.result2.selectedItemPosition)
+        }
+        else {
+            editor.clear()
+            editor.putBoolean("prefs_save_values", false)
+        }
+        editor.apply()
+
+        super.onPause()
+    }
 //Menu display
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
@@ -92,22 +130,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+            when(item.itemId){
             R.id.about ->{
                 val myToast = Toast.makeText(this,"Developed by Rojan Baral, " +
                         "JAV-1001, " +
                         "Cambrian college, Sudbury",Toast.LENGTH_LONG)
                 myToast.setGravity(Gravity.LEFT,300,300)
                 myToast.show()
-                return true
             }
             R.id.setting ->{
-                val intent = Intent(this,Activity2::class.java)
+                val intent = Intent(this,SettingsActivity::class.java)
                 startActivity(intent)
-                return true
+
             }
             else -> super.onOptionsItemSelected(item)
         }
+        return true
     }
 
 

@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="prefs_save_score"
+        android:title="Save Score"
+        android:summary="Save the scores on exit"/>
+</PreferenceScreen>
