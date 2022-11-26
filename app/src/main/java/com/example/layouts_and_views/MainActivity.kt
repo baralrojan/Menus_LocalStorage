@@ -18,6 +18,8 @@ import com.example.layouts_and_views.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+    private var cambrianScore = ""
+    private var senecaScore = ""
     private var viewCamScore:Int = 0
     private var viewSenScore:Int = 0
     lateinit var binding: ActivityMainBinding
@@ -51,6 +53,11 @@ class MainActivity : AppCompatActivity() {
         //Increase score if cambrian score(+) is clicked
         var camBtnIncrease = findViewById<Button>(R.id.btn1_increase)
         camBtnIncrease.setOnClickListener {
+            if(cambrianScore!= null){
+                var newscore = cambrianScore.getText().toString()
+                var cambrianScoreToInt = Integer.parseInt(newscore)
+                viewCamScore = cambrianScoreToInt
+            }
             viewCamScore++
             cambrianScore.setText("$viewCamScore")
 
@@ -59,6 +66,11 @@ class MainActivity : AppCompatActivity() {
         //Decrease score if cambrian score(-) is clicked
         var camBtnDecrease = findViewById<Button>(R.id.btn1_decrease)
         camBtnDecrease.setOnClickListener {
+            if(cambrianScore!= null){
+                var newscore = cambrianScore.getText().toString()
+                var cambrianScoreToInt = Integer.parseInt(newscore)
+                viewCamScore = cambrianScoreToInt
+            }
             viewCamScore--
             if(viewCamScore<0){
                 //If score is less than zero set it to 0
@@ -72,6 +84,11 @@ class MainActivity : AppCompatActivity() {
         //Increase score if seneca score(+) is clicked
         var senBtnIncrease = findViewById<Button>(R.id.btn2_increase)
         senBtnIncrease.setOnClickListener {
+            if(senecaScore!= null){
+                var newscore = senecaScore.getText().toString()
+                var senecaScoreToInt = Integer.parseInt(newscore)
+                viewSenScore = senecaScoreToInt
+            }
             viewSenScore++
             senecaScore.setText("$viewSenScore")
         }
@@ -79,6 +96,11 @@ class MainActivity : AppCompatActivity() {
         //Decrease score if seneca score(-) is clicked
         var senBtnDecrease = findViewById<Button>(R.id.btn2_decrease)
         senBtnDecrease.setOnClickListener {
+            if(senecaScore!= null){
+                var newscore = senecaScore.getText().toString()
+                var senecaScoreToInt = Integer.parseInt(newscore)
+                viewSenScore = senecaScoreToInt
+            }
             viewSenScore--
             if(viewSenScore<0){
                 //If score is less than zero set it to 0
@@ -95,8 +117,8 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        var cambrianScore = sharedPrefs.getString("prefs_cambrian_score","")
-        var senecaScore = sharedPrefs.getString("prefs_seneca_score","")
+        cambrianScore = sharedPrefs.getString("prefs_cambrian_score",cambrianScore).toString()
+        senecaScore = sharedPrefs.getString("prefs_seneca_score",senecaScore).toString()
         binding.score1.text = cambrianScore
         binding.score2.text = senecaScore
         binding.result1.setSelection(sharedPrefs.getInt("prefs_cambrianScore_spinner",0))
