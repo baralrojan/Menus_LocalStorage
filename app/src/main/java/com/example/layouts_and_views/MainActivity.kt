@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
- //save score and spinner value 
+ //save score and spinner value
     override fun onPause() {
 
         val editor = sharedPrefs.edit()
